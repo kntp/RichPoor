@@ -68,3 +68,77 @@ TEST(Card, JokerCreateTest)
 	delete cd;
 }
 
+TEST_GROUP(CardFactory)
+{
+	void setup ()
+	{
+	}
+
+	void teardown()
+	{
+	}
+};
+
+TEST(CardFactory, FactoryTest)
+{
+	Card *cd;
+
+	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 10);
+	CHECK(cd != 0);
+	CHECK_EQUAL(Card::SUIT_DIAMOND, cd->getSuit());
+	CHECK_EQUAL(10, cd->getNumber());
+
+	delete cd;
+}
+
+
+TEST(CardFactory, newFactoryTest)
+{
+	CardFactory *cf;
+	Card *cd;
+
+	cf = new CardFactory();
+	cd = cf->createCard(Card::SUIT_DIAMOND, 10);
+	CHECK(cd != 0);
+	CHECK_EQUAL(Card::SUIT_DIAMOND, cd->getSuit());
+	CHECK_EQUAL(10, cd->getNumber());
+
+	delete cd;
+	delete cf;
+}
+
+TEST(CardFactory, RangeTest)
+{
+	Card *cd;
+	int s;
+
+	for(s = Card::SUIT_SPADE; s < Card::SUIT_JOKER; s++) {
+		cd = CardFactory::createCard(s, 14);
+		CHECK_EQUAL(0, cd);
+		
+		cd = CardFactory::createCard(s, -1);
+		CHECK_EQUAL(0, cd);
+		
+		cd = CardFactory::createCard(s, 20);
+		CHECK_EQUAL(0, cd);
+		
+		cd = CardFactory::createCard(s, 65536);
+		CHECK_EQUAL(0, cd);
+	}
+	
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 0);
+	CHECK_EQUAL(0, cd);
+	cd = CardFactory::createCard(Card::SUIT_HEART, 0);
+	CHECK_EQUAL(0, cd);
+	cd = CardFactory::createCard(Card::SUIT_CLUB, 0);
+	CHECK_EQUAL(0, cd);
+	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 0);
+	CHECK_EQUAL(0, cd);
+	cd = CardFactory::createCard(5, 0);
+	CHECK_EQUAL(0, cd);
+	cd = CardFactory::createCard(100, 0);
+	CHECK_EQUAL(0, cd);
+
+	delete cd;
+}
+

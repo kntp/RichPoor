@@ -16,3 +16,11 @@ private:
 	int num;
 };
 
+class CardFactory
+{
+public:
+	CardFactory(void);
+	~CardFactory(void);
+	static Card *createCard(int suit, int num);
+};
+
