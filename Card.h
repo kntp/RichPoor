@@ -1,3 +1,5 @@
+#ifndef CARD_H
+#define CARD_H
 class Card
 {
 public:
@@ -24,3 +26,4 @@ public:
 	static Card *createCard(int suit, int num);
 };
 
+#endif /* CARD_H */

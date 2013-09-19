@@ -1,6 +1,6 @@
 #include "Card.h"
-#include <stdio.h>
 
+// Card Class
 Card::Card(int suit, int num):suit(suit),num(num)
 {
 	if(suit == SUIT_JOKER) {
@@ -30,6 +30,7 @@ CardFactory::~CardFactory(void)
 {
 }
 
+// CardFactory Class
 Card *CardFactory::createCard(int suit, int num)
 {
 	Card *cd;
@@ -46,3 +47,4 @@ Card *CardFactory::createCard(int suit, int num)
 
 	return cd;
 }
+

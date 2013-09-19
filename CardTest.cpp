@@ -68,6 +68,7 @@ TEST(Card, JokerCreateTest)
 	delete cd;
 }
 
+// CardFactory Test
 TEST_GROUP(CardFactory)
 {
 	void setup ()
@@ -128,7 +129,7 @@ TEST(CardFactory, RangeTest)
 	
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 0);
 	CHECK_EQUAL(0, cd);
-	cd = CardFactory::createCard(Card::SUIT_HEART, 0);
+	cd = CardFactory::createCard(Card::SUIT_HEART, -1);
 	CHECK_EQUAL(0, cd);
 	cd = CardFactory::createCard(Card::SUIT_CLUB, 0);
 	CHECK_EQUAL(0, cd);
@@ -141,4 +142,5 @@ TEST(CardFactory, RangeTest)
 
 	delete cd;
 }
+
 
