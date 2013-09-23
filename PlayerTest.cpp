@@ -33,4 +33,28 @@ TEST(Player, PlayerCreateTest)
 	delete pl;
 }
 
+TEST(Player, CardAddTest)
+{
+	Player *pl;
+	Card *cd;
+	int s, n, cnt;
+
+	pl = new Player(0);
+	for(s = Card::SUIT_SPADE, cnt = 0; s <= Card::SUIT_JOKER; s++) {
+		for(n = 1; n < 14; n++) {
+			cd = new Card(Card::SUIT_SPADE, 1);
+			pl->addCard(cd);
+		}
+	}
+	for(s = Card::SUIT_SPADE, cnt = 0; s <= Card::SUIT_JOKER; s++) {
+		for(n = 1; n < 14; n++) {
+			cd = pl->takeCard(s, n);
+			CHECK_EQUAL(s, cd->getSuit());
+			CHECK_EQUAL(n, cd->getNumber());
+			delete cd;
+		}
+	}
+	delete pl;
+}
+
 
