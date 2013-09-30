@@ -143,4 +143,40 @@ TEST(CardFactory, RangeTest)
 	delete cd;
 }
 
+// CardFactory Test
+TEST_GROUP(CardSet)
+{
+	void setup ()
+	{
+	}
+
+	void teardown()
+	{
+	}
+};
+
+TEST(CardSet, CreateTest)
+{
+	Card *cd;
+	CardSet cs;
+
+	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 10);
+	cs.addCard(cd);
+	cd = cs.pickCard();
+
+	CHECK_EQUAL(Card::SUIT_DIAMOND, cd->getSuit());
+	CHECK_EQUAL(10, cd->getNumber());
+
+	delete cd;
+
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 1);
+	cs.addCard(cd);
+	cd = cs.pickCard();
+
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(1, cd->getNumber());
+
+	delete cd;
+}
+
 

@@ -11,6 +11,7 @@ public:
 	Card *takeCard(int suit, int num);
 private:
 	int player_no;
+	CardSet	cardset;
 };
 
 #endif

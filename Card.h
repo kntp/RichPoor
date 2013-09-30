@@ -1,7 +1,6 @@
 #ifndef CARD_H
 #define CARD_H
-class Card
-{
+class Card {
 public:
 	static const int SUIT_SPADE = 0;
 	static const int SUIT_HEART = 1;
@@ -16,14 +15,28 @@ public:
 private:
 	int suit;
 	int num;
+	Card *next;
+	Card *previous;
 };
 
-class CardFactory
-{
+class CardFactory {
 public:
 	CardFactory(void);
 	~CardFactory(void);
 	static Card *createCard(int suit, int num);
 };
 
+class CardSet {
+public:
+	CardSet();
+	~CardSet();
+	void addCard(Card *cd);
+	void insertCard(Card *cd);
+	void sortByNum(void);
+	Card *pickCard(void);
+private:
+	Card *first, *end;
+	int size;
+};
 #endif /* CARD_H */
+
