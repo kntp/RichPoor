@@ -56,16 +56,13 @@ CardSet::~CardSet() {
 }
 
 void CardSet::addCard(Card *cd){
-	delete cd;
+	first = cd;
 
 	return;
 }
 
 Card *CardSet::pickCard(void) {
-	Card *cd;
 
-	cd = new Card(Card::SUIT_DIAMOND, 10);
-
-	return cd;
+	return first;
 }
 
