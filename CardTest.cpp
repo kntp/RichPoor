@@ -146,23 +146,26 @@ TEST(CardFactory, RangeTest)
 // CardFactory Test
 TEST_GROUP(CardSet)
 {
+	CardSet *cset;
+
 	void setup ()
 	{
+		cset = new CardSet();
 	}
 
 	void teardown()
 	{
+		delete cset;
 	}
 };
 
 TEST(CardSet, CreateTest)
 {
 	Card *cd;
-	CardSet cs;
 
 	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 10);
-	cs.addCard(cd);
-	cd = cs.pickCard();
+	cset->addCard(cd);
+	cd = cset->pickCard();
 
 	CHECK_EQUAL(Card::SUIT_DIAMOND, cd->getSuit());
 	CHECK_EQUAL(10, cd->getNumber());
@@ -170,8 +173,8 @@ TEST(CardSet, CreateTest)
 	delete cd;
 
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 1);
-	cs.addCard(cd);
-	cd = cs.pickCard();
+	cset->addCard(cd);
+	cd = cset->pickCard();
 
 	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
 	CHECK_EQUAL(1, cd->getNumber());
