@@ -15,8 +15,6 @@ public:
 private:
 	int suit;
 	int num;
-	Card *next;
-	Card *previous;
 };
 
 class CardFactory {
@@ -35,8 +33,7 @@ public:
 	void sortByNum(void);
 	Card *pickCard(void);
 private:
-	Card *first, *end;
-	int size;
+	vector<Card*> cardset;
 };
 #endif /* CARD_H */
 

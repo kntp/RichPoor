@@ -1,6 +1,6 @@
 #include "CppUTest/TestHarness.h"
-#include "Player.h"
 #include "Card.h"
+#include "Player.h"
 
 /* Declare TestGroup with name CheatSheet */
 TEST_GROUP(Player)

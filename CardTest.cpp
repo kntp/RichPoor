@@ -182,4 +182,27 @@ TEST(CardSet, CreateTest)
 	delete cd;
 }
 
+TEST(CardSet, AddCardTest)
+{
+	Card *cd;
+
+	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 10);
+	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 1);
+	cset->addCard(cd);
+	cd = cset->pickCard();
+
+	CHECK_EQUAL(Card::SUIT_DIAMOND, cd->getSuit());
+	CHECK_EQUAL(10, cd->getNumber());
+
+	delete cd;
+
+	cd = cset->pickCard();
+
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(1, cd->getNumber());
+
+	delete cd;
+}
+
 

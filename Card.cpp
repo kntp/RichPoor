@@ -1,8 +1,11 @@
+#include <vector>
+using namespace std;
 #include "Card.h"
+
 
 // Card Class
 Card::Card(int suit, int num) :
-		suit(suit), num(num), next(0), previous(0) {
+		suit(suit), num(num) {
 	if (suit == SUIT_JOKER) {
 		this->num = 0;
 	}
@@ -44,8 +47,7 @@ Card *CardFactory::createCard(int suit, int num) {
 
 // CardSet Class
 
-CardSet::CardSet() :
-	first(0), end(0), size(0)
+CardSet::CardSet()
 {
 	// TODO 自動生成されたコンストラクター・スタブ
 
@@ -56,13 +58,14 @@ CardSet::~CardSet() {
 }
 
 void CardSet::addCard(Card *cd){
-	first = cd;
-
 	return;
+}
+
+void CardSet::insertCard(Card* cd) {
 }
 
 Card *CardSet::pickCard(void) {
 
-	return first;
+	return 0;
 }
 
