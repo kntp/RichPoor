@@ -1,4 +1,6 @@
 #include "CppUTest/TestHarness.h"
+#include <vector>
+using namespace std;
 #include "Card.h"
 
 /* Declare TestGroup with name CheatSheet */

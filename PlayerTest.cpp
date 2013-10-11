@@ -1,3 +1,5 @@
+#include <vector>
+using namespace std;
 #include "CppUTest/TestHarness.h"
 #include "Card.h"
 #include "Player.h"
