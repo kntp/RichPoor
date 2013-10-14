@@ -33,7 +33,7 @@ public:
 	void sortByNum(void);
 	Card *pickCard(void);
 private:
-	vector<Card*> cardset;
+	list<Card*> cardset;
 };
 #endif /* CARD_H */
 

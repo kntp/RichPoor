@@ -1,5 +1,5 @@
 #include "CppUTest/TestHarness.h"
-#include <vector>
+#include <list>
 using namespace std;
 #include "Card.h"
 
@@ -206,5 +206,4 @@ TEST(CardSet, AddCardTest)
 
 	delete cd;
 }
-
 

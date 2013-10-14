@@ -1,4 +1,4 @@
-#include <vector>
+#include <list>
 using namespace std;
 #include "Card.h"
 #include "Player.h"

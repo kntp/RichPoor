@@ -1,4 +1,4 @@
-#include <vector>
+#include <list>
 using namespace std;
 #include "Card.h"
 
@@ -58,6 +58,7 @@ CardSet::~CardSet() {
 }
 
 void CardSet::addCard(Card *cd){
+	cardset.push_back(cd);
 	return;
 }
 
@@ -65,7 +66,11 @@ void CardSet::insertCard(Card* cd) {
 }
 
 Card *CardSet::pickCard(void) {
+	Card *ret;
 
-	return 0;
+	ret = cardset.front();
+	cardset.pop_front();
+
+	return ret;
 }
 
