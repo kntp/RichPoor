@@ -207,3 +207,26 @@ TEST(CardSet, AddCardTest)
 	delete cd;
 }
 
+
+TEST(CardSet, checkCardTest)
+{
+	Card *cd;
+
+	cd = CardFactory::createCard(Card::SUIT_HEART, 10);
+	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_CLUB, 3);
+	cset->addCard(cd);
+	cd = cset->checkCard(0);
+
+	CHECK_EQUAL(Card::SUIT_HEART, cd->getSuit());
+	CHECK_EQUAL(10, cd->getNumber());
+
+	delete cd;
+
+	cd = cset->checkCard(1);
+
+	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
+	CHECK_EQUAL(3, cd->getNumber());
+
+	delete cd;
+}

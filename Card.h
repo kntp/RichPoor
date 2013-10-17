@@ -28,10 +28,12 @@ class CardSet {
 public:
 	CardSet();
 	~CardSet();
+	void clearCards(void);
 	void addCard(Card *cd);
 	void insertCard(Card *cd);
 	void sortByNum(void);
 	Card *pickCard(void);
+	Card *checkCard(int no);
 private:
 	list<Card*> cardset;
 };

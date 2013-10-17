@@ -57,6 +57,11 @@ CardSet::~CardSet() {
 	// TODO Auto-generated destructor stub
 }
 
+void CardSet::clearCards(void)
+{
+	return;
+}
+
 void CardSet::addCard(Card *cd){
 	cardset.push_back(cd);
 	return;
@@ -72,5 +77,20 @@ Card *CardSet::pickCard(void) {
 	cardset.pop_front();
 
 	return ret;
+}
+
+Card *CardSet::checkCard(int no) {
+	Card *cd;
+	int i = 0;
+
+	for(list<Card*>::iterator it = cardset.begin(); it != cardset.end(); it++) {
+		cd = *it;
+		if(i == no) {
+			break;
+		}
+		i++;
+	}
+
+	return cd;
 }
 
