@@ -15,6 +15,9 @@ app: $(TARGET)
 check: $(TEST_TARGET)
 	./$(TEST_TARGET)
 
+check2: $(TEST_TARGET)
+	./$(TEST_TARGET) -ojunit
+
 MyApp: $(APPOBJS)
 	$(CPP) -o $(TARGET) $(APPOBJS)
 
