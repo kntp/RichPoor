@@ -216,6 +216,8 @@ TEST(CardSet, checkCardTest)
 	cset->addCard(cd);
 	cd = CardFactory::createCard(Card::SUIT_CLUB, 3);
 	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 4);
+	cset->addCard(cd);
 	cd = cset->checkCard(0);
 
 	CHECK_EQUAL(Card::SUIT_HEART, cd->getSuit());
@@ -227,6 +229,13 @@ TEST(CardSet, checkCardTest)
 
 	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
 	CHECK_EQUAL(3, cd->getNumber());
+
+	delete cd;
+
+	cd = cset->checkCard(3);
+
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(4, cd->getNumber());
 
 	delete cd;
 }
