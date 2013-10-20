@@ -7,8 +7,6 @@ using namespace std;
 TEST_GROUP(Card)
 {
 /* declare a setup method for the test group. Optional. */
-	Card *cd;
-
 	void setup ()
 	{
 /* Set method real_one to stub. Automatically restore in teardown */
