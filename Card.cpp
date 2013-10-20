@@ -59,6 +59,12 @@ CardSet::~CardSet() {
 
 void CardSet::clearCards(void)
 {
+	for(list<Card*>::iterator it = cardset.begin(); it != cardset.end(); it++) {
+		delete *it;
+	}
+
+	cardset.clear();
+
 	return;
 }
 

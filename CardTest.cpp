@@ -157,6 +157,9 @@ TEST_GROUP(CardSet)
 
 	void teardown()
 	{
+
+		cset->clearCards();
+
 		delete cset;
 	}
 };
@@ -223,19 +226,14 @@ TEST(CardSet, checkCardTest)
 	CHECK_EQUAL(Card::SUIT_HEART, cd->getSuit());
 	CHECK_EQUAL(10, cd->getNumber());
 
-	delete cd;
-
 	cd = cset->checkCard(1);
 
 	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
 	CHECK_EQUAL(3, cd->getNumber());
-
-	delete cd;
 
 	cd = cset->checkCard(3);
 
 	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
 	CHECK_EQUAL(4, cd->getNumber());
 
-	delete cd;
 }
