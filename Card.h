@@ -2,11 +2,12 @@
 #define CARD_H
 class Card {
 public:
-	static const int SUIT_SPADE = 0;
-	static const int SUIT_HEART = 1;
-	static const int SUIT_DIAMOND = 2;
-	static const int SUIT_CLUB = 3;
-	static const int SUIT_JOKER = 4;
+	static const int SUIT_NONE = 0;
+	static const int SUIT_SPADE = 1;
+	static const int SUIT_HEART = 2;
+	static const int SUIT_DIAMOND = 3;
+	static const int SUIT_CLUB = 4;
+	static const int SUIT_JOKER = 5;
 
 	Card(int suit, int num);
 	~Card(void);
@@ -33,7 +34,7 @@ public:
 	void insertCard(Card *cd);
 	void sortByNum(void);
 	Card *pickCard(void);
-	Card *checkCard(int no);
+	Card *checkCard(unsigned int no);
 private:
 	list<Card*> cardset;
 };

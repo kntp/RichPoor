@@ -229,9 +229,12 @@ TEST(CardSet, checkCardTest)
 	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
 	CHECK_EQUAL(3, cd->getNumber());
 
-	cd = cset->checkCard(3);
+	cd = cset->checkCard(2);
 
 	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
 	CHECK_EQUAL(4, cd->getNumber());
 
+	cd = cset->checkCard(3);
+
+	CHECK_EQUAL(0, cd);
 }

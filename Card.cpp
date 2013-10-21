@@ -85,9 +85,13 @@ Card *CardSet::pickCard(void) {
 	return ret;
 }
 
-Card *CardSet::checkCard(int no) {
+Card *CardSet::checkCard(unsigned int no) {
 	Card *cd;
-	int i = 0;
+	unsigned int i = 0;
+
+	if(no >= cardset.size()) {
+		return 0;
+	}
 
 	for(list<Card*>::iterator it = cardset.begin(); it != cardset.end(); it++) {
 		cd = *it;
