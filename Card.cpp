@@ -1,3 +1,6 @@
+/*! @file  Card.cpp
+   @brief カードの取り扱いを記述する
+*/
 #include <list>
 using namespace std;
 #include "Card.h"
