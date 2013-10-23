@@ -1,6 +1,8 @@
-/*! @file  Card.cpp
-   @brief カードの取り扱いを記述する
-*/
+/**
+ * @file  Card.cpp
+ *  @brief カードの取り扱いを記述する
+ */
+
 #include <list>
 using namespace std;
 #include "Card.h"
@@ -88,22 +90,21 @@ Card *CardSet::pickCard(void) {
 	return ret;
 }
 
-Card *CardSet::checkCard(unsigned int no) {
-	Card *cd;
+bool CardSet::checkCard(unsigned int no, Card **cd) {
 	unsigned int i = 0;
 
 	if(no >= cardset.size()) {
-		return 0;
+		return false;
 	}
 
 	for(list<Card*>::iterator it = cardset.begin(); it != cardset.end(); it++) {
-		cd = *it;
+		*cd = *it;
 		if(i == no) {
 			break;
 		}
 		i++;
 	}
 
-	return cd;
+	return true;
 }
 

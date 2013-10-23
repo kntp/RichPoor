@@ -212,6 +212,7 @@ TEST(CardSet, AddCardTest)
 TEST(CardSet, checkCardTest)
 {
 	Card *cd;
+	bool result;
 
 	cd = CardFactory::createCard(Card::SUIT_HEART, 10);
 	cset->addCard(cd);
@@ -219,22 +220,25 @@ TEST(CardSet, checkCardTest)
 	cset->addCard(cd);
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 4);
 	cset->addCard(cd);
-	cd = cset->checkCard(0);
+	result = cset->checkCard(0, &cd);
 
+	CHECK_EQUAL(true, result);
 	CHECK_EQUAL(Card::SUIT_HEART, cd->getSuit());
 	CHECK_EQUAL(10, cd->getNumber());
 
-	cd = cset->checkCard(1);
+	result = cset->checkCard(1, &cd);
 
+	CHECK_EQUAL(true, result);
 	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
 	CHECK_EQUAL(3, cd->getNumber());
 
-	cd = cset->checkCard(2);
+	result = cset->checkCard(2, &cd);
 
+	CHECK_EQUAL(true, result);
 	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
 	CHECK_EQUAL(4, cd->getNumber());
 
-	cd = cset->checkCard(3);
+	result = cset->checkCard(3, &cd);
 
-	CHECK_EQUAL(0, cd);
+	CHECK_EQUAL(false, result);
 }
