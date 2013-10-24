@@ -79,6 +79,9 @@ void CardSet::addCard(Card *cd){
 }
 
 void CardSet::insertCard(Card* cd) {
+	cardset.push_front(cd);
+
+	return ;
 }
 
 unsigned int CardSet::getSize(void) {

@@ -3,20 +3,16 @@
 using namespace std;
 #include "Card.h"
 
-/* Declare TestGroup with name CheatSheet */
 TEST_GROUP(Card)
 {
-/* declare a setup method for the test group. Optional. */
 	void setup ()
 	{
-/* Set method real_one to stub. Automatically restore in teardown */
 	}
 
-/* Declare a teardown method for the test group. Optional */
 	void teardown()
 	{
 	}
-}; /* Do not forget semicolumn */
+};
 
 /* Declare one test within the test group */
 TEST(Card, CardCreateTest)
@@ -275,4 +271,23 @@ TEST(CardSet, clearCardTest)
 
 	CHECK_EQUAL(0, cset->getSize());
 
+}
+
+
+TEST(CardSet, insertCardTest)
+{
+	Card *cd;
+	bool result;
+
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 5);
+	cset->addCard(cd);
+
+	cd = CardFactory::createCard(Card::SUIT_CLUB, 8);
+	cset->insertCard(cd);
+
+	result = cset->checkCard(0, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
+	CHECK_EQUAL(8, cd->getNumber());
 }
