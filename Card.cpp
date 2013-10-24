@@ -81,6 +81,10 @@ void CardSet::addCard(Card *cd){
 void CardSet::insertCard(Card* cd) {
 }
 
+unsigned int CardSet::getSize(void) {
+	return cardset.size();
+}
+
 Card *CardSet::pickCard(void) {
 	Card *ret;
 

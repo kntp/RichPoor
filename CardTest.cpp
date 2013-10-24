@@ -242,3 +242,37 @@ TEST(CardSet, checkCardTest)
 
 	CHECK_EQUAL(false, result);
 }
+
+TEST(CardSet, sizeTest)
+{
+	Card *cd;
+
+	CHECK_EQUAL(0, cset->getSize());
+
+	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 13);
+	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_JOKER, 0);
+	cset->addCard(cd);
+
+	CHECK_EQUAL(2, cset->getSize());
+
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 5);
+	cset->addCard(cd);
+
+	CHECK_EQUAL(3, cset->getSize());
+}
+
+TEST(CardSet, clearCardTest)
+{
+	Card *cd;
+
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 5);
+	cset->addCard(cd);
+
+	CHECK_EQUAL(1, cset->getSize());
+
+	cset->clearCards();
+
+	CHECK_EQUAL(0, cset->getSize());
+
+}

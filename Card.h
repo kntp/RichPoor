@@ -107,6 +107,13 @@ public:
  */
 	void sortByNum(void);
 /**
+ * カードの数を返す
+ *
+ * カードセットに登録されているカード数を返す
+ * @return カード数
+ */
+	unsigned int getSize(void);
+/**
  * カードを取り出す
  *
  * カードをカードセットの先頭から取り出す
