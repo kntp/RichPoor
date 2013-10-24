@@ -10,31 +10,38 @@ using namespace std;
 
 // Card Class
 Card::Card(int suit, int num) :
-		suit(suit), num(num) {
+		suit(suit), num(num)
+{
 	if (suit == SUIT_JOKER) {
 		this->num = 0;
 	}
 }
 
-Card::~Card(void) {
+Card::~Card(void)
+{
 }
 
-int Card::getSuit(void) {
+int Card::getSuit(void)
+{
 	return this->suit;
 }
 
-int Card::getNumber(void) {
+int Card::getNumber(void)
+{
 	return this->num;
 }
 
-CardFactory::CardFactory(void) {
+CardFactory::CardFactory(void)
+{
 }
 
-CardFactory::~CardFactory(void) {
+CardFactory::~CardFactory(void)
+{
 }
 
 // CardFactory Class
-Card *CardFactory::createCard(int suit, int num) {
+Card *CardFactory::createCard(int suit, int num)
+{
 	Card *cd;
 
 	if ((suit < 0) || (suit > 4)) {
@@ -58,7 +65,8 @@ CardSet::CardSet()
 
 }
 
-CardSet::~CardSet() {
+CardSet::~CardSet()
+{
 	// TODO Auto-generated destructor stub
 }
 
@@ -73,35 +81,38 @@ void CardSet::clearCards(void)
 	return;
 }
 
-void CardSet::addCard(Card *cd){
+void CardSet::addCard(Card *cd)
+{
 	cardset.push_back(cd);
 	return;
 }
 
-void CardSet::insertCard(Card* cd) {
+void CardSet::insertCard(Card* cd)
+{
 	cardset.push_front(cd);
 
 	return ;
 }
 
-#if 0
-bool compCard(const Card* &a, const Card* &b){
+bool compCard(const Card* a, const Card* b)
+{
     return *a < *b;
 }
-#endif
 
-void  CardSet::sortByNum(void) {
-	for(list<Card*>::iterator it = cardset.begin(); it != cardset.end(); it++) {
-	}
+void  CardSet::sortByNum(void)
+{
+	cardset.sort(compCard);
 
 	return;
 }
 
-unsigned int CardSet::getSize(void) {
+unsigned int CardSet::getSize(void)
+{
 	return cardset.size();
 }
 
-Card *CardSet::pickCard(void) {
+Card *CardSet::pickCard(void)
+{
 	Card *ret;
 
 	ret = cardset.front();
@@ -110,7 +121,8 @@ Card *CardSet::pickCard(void) {
 	return ret;
 }
 
-bool CardSet::checkCard(unsigned int no, Card **cd) {
+bool CardSet::checkCard(unsigned int no, Card **cd)
+{
 	unsigned int i = 0;
 
 	if(no >= cardset.size()) {
