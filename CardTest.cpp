@@ -64,6 +64,23 @@ TEST(Card, JokerCreateTest)
 	delete cd;
 }
 
+TEST(Card, CardCompareTest)
+{
+	Card *cd1, *cd2;
+
+	cd1 = new Card(Card::SUIT_SPADE, 1);
+	cd2 = new Card(Card::SUIT_SPADE, 2);
+	CHECK_TRUE(*cd1 < *cd2);
+	delete cd1;
+	delete cd2;
+
+	cd1 = new Card(Card::SUIT_CLUB, 1);
+	cd2 = new Card(Card::SUIT_SPADE, 2);
+	CHECK_TRUE(*cd1 < *cd2);
+	delete cd1;
+	delete cd2;
+}
+
 // CardFactory Test
 TEST_GROUP(CardFactory)
 {
@@ -290,4 +307,48 @@ TEST(CardSet, insertCardTest)
 	CHECK_EQUAL(true, result);
 	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
 	CHECK_EQUAL(8, cd->getNumber());
+
+	result = cset->checkCard(1, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(5, cd->getNumber());
 }
+
+TEST(CardSet, sortCardTest)
+{
+	Card *cd;
+	bool result;
+
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 2);
+	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 1);
+	cset->addCard(cd);
+
+	result = cset->checkCard(0, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(2, cd->getNumber());
+
+	result = cset->checkCard(1, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(1, cd->getNumber());
+
+	cset->sortByNum();
+
+	result = cset->checkCard(0, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(1, cd->getNumber());
+
+	result = cset->checkCard(1, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(2, cd->getNumber());
+}
+

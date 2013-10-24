@@ -84,6 +84,19 @@ void CardSet::insertCard(Card* cd) {
 	return ;
 }
 
+#if 0
+bool compCard(const Card* &a, const Card* &b){
+    return *a < *b;
+}
+#endif
+
+void  CardSet::sortByNum(void) {
+	for(list<Card*>::iterator it = cardset.begin(); it != cardset.end(); it++) {
+	}
+
+	return;
+}
+
 unsigned int CardSet::getSize(void) {
 	return cardset.size();
 }

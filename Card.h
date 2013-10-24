@@ -26,6 +26,12 @@ public:
  */
 	~Card(void);
 /**
+ * 比較演算子(sortで必要)
+ */
+bool operator<(const Card &a)const{
+	return num < a.num;
+}
+/**
  * カードのスートを取得する
  * @return スート
  */
@@ -78,6 +84,7 @@ public:
  * コンストラクタ
  */
 	CardSet();
+
 /**
  * デストラクタ
  */
