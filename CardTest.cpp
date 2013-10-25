@@ -60,7 +60,6 @@ TEST(Card, JokerCreateTest)
 
 	cd = new Card(Card::SUIT_JOKER, 1);
 	CHECK_EQUAL(Card::SUIT_JOKER, cd->getSuit());
-	CHECK_EQUAL(0, cd->getNumber());
 	delete cd;
 }
 
@@ -180,6 +179,7 @@ TEST(CardSet, CreateTest)
 	Card *cd;
 
 	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 10);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	cd = cset->pickCard();
 
@@ -189,6 +189,7 @@ TEST(CardSet, CreateTest)
 	delete cd;
 
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 1);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	cd = cset->pickCard();
 
@@ -203,8 +204,10 @@ TEST(CardSet, AddCardTest)
 	Card *cd;
 
 	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 10);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 1);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	cd = cset->pickCard();
 
@@ -228,10 +231,13 @@ TEST(CardSet, checkCardTest)
 	bool result;
 
 	cd = CardFactory::createCard(Card::SUIT_HEART, 10);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	cd = CardFactory::createCard(Card::SUIT_CLUB, 3);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 4);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	result = cset->checkCard(0, &cd);
 
@@ -263,13 +269,16 @@ TEST(CardSet, sizeTest)
 	CHECK_EQUAL(0, cset->getSize());
 
 	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 13);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	cd = CardFactory::createCard(Card::SUIT_JOKER, 0);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 
 	CHECK_EQUAL(2, cset->getSize());
 
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 5);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 
 	CHECK_EQUAL(3, cset->getSize());
@@ -280,6 +289,7 @@ TEST(CardSet, clearCardTest)
 	Card *cd;
 
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 5);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 
 	CHECK_EQUAL(1, cset->getSize());
@@ -297,9 +307,11 @@ TEST(CardSet, insertCardTest)
 	bool result;
 
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 5);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 
 	cd = CardFactory::createCard(Card::SUIT_CLUB, 8);
+	CHECK(cd != 0);
 	cset->insertCard(cd);
 
 	result = cset->checkCard(0, &cd);
@@ -321,8 +333,10 @@ TEST(CardSet, sortCardTest)
 	bool result;
 
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 2);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 1);
+	CHECK(cd != 0);
 	cset->addCard(cd);
 
 	result = cset->checkCard(0, &cd);
@@ -352,3 +366,55 @@ TEST(CardSet, sortCardTest)
 	CHECK_EQUAL(2, cd->getNumber());
 }
 
+TEST(CardSet, sortCardTest2)
+{
+	Card *cd;
+	bool result;
+
+	cd = CardFactory::createCard(Card::SUIT_JOKER, 0);
+	CHECK(cd != 0);
+	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_SPADE, 5);
+	CHECK(cd != 0);
+	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_CLUB, 1);
+	CHECK(cd != 0);
+	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_CLUB, 5);
+	CHECK(cd != 0);
+	cset->addCard(cd);
+	cd = CardFactory::createCard(Card::SUIT_DIAMOND, 5);
+	CHECK(cd != 0);
+	cset->addCard(cd);
+
+	cset->sortByNum();
+
+	result = cset->checkCard(0, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
+	CHECK_EQUAL(1, cd->getNumber());
+
+	result = cset->checkCard(1, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_SPADE, cd->getSuit());
+	CHECK_EQUAL(5, cd->getNumber());
+
+	result = cset->checkCard(2, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_DIAMOND, cd->getSuit());
+	CHECK_EQUAL(5, cd->getNumber());
+
+	result = cset->checkCard(3, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_CLUB, cd->getSuit());
+	CHECK_EQUAL(5, cd->getNumber());
+
+	result = cset->checkCard(4, &cd);
+
+	CHECK_EQUAL(true, result);
+	CHECK_EQUAL(Card::SUIT_JOKER, cd->getSuit());
+}

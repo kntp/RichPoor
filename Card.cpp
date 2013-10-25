@@ -12,9 +12,6 @@ using namespace std;
 Card::Card(int suit, int num) :
 		suit(suit), num(num)
 {
-	if (suit == SUIT_JOKER) {
-		this->num = 0;
-	}
 }
 
 Card::~Card(void)
@@ -44,11 +41,13 @@ Card *CardFactory::createCard(int suit, int num)
 {
 	Card *cd;
 
-	if ((suit < 0) || (suit > 4)) {
+	if ((suit < Card::SUIT_SPADE) || (suit > Card::SUIT_JOKER)) {
 		return 0;
 	}
 
-	if ((num < 1) || (num > 13)) {
+	if (suit == Card::SUIT_JOKER) {
+		num = 14;
+	}else if ((num < 1) || (num > 13)) {
 		return 0;
 	}
 

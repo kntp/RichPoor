@@ -28,7 +28,10 @@ public:
 /**
  * 比較演算子(sortで必要)
  */
-bool operator<(const Card &a)const{
+bool operator<(const Card a)const{
+	if(num == a.num) {
+		return suit < a.suit;
+	}
 	return num < a.num;
 }
 /**
