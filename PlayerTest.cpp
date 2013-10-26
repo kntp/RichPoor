@@ -23,16 +23,12 @@ TEST_GROUP(Player)
 TEST(Player, PlayerCreateTest)
 {
 	Player *pl;
-	Card *cd, *cd2;
 
-	pl = new Player(0);
-	cd = new Card(Card::SUIT_SPADE, 1);
-	pl->addCard(cd);
-	cd2 = pl->takeCard(Card::SUIT_SPADE, 1);
-	CHECK_EQUAL(Card::SUIT_SPADE, cd2->getSuit());
-	CHECK_EQUAL(1, cd2->getNumber());
-	delete cd2;
-	delete pl;
+	for(int i = 0; i < 10; i++) { 
+		pl = new Player(i);
+		CHECK_EQUAL(i, pl->getPlayerNo());
+		delete pl;
+	}
 }
 
 

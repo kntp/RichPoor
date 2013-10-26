@@ -7,8 +7,7 @@ class Player
 public:
 	Player(int no);
 	~Player(void);
-	void addCard(Card *cd);
-	Card *takeCard(int suit, int num);
+	int getPlayerNo(void);
 private:
 	int player_no;
 	CardSet	cardset;
