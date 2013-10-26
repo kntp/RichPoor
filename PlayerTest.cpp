@@ -31,5 +31,14 @@ TEST(Player, PlayerCreateTest)
 	}
 }
 
+TEST(Player, PlayerCreateTest2)
+{
+	Player *pl;
+
+	pl = new Player(0);
+	CHECK_EQUAL(Player::RANK_COMMON, pl->getPlayerRank());
+	delete pl;
+}
+
 
 

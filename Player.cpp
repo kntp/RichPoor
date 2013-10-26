@@ -15,4 +15,8 @@ int Player::getPlayerNo(void)
 {
 	return player_no;
 }
+int Player::getPlayerRank(void)
+{
+	return 0;
+}
 
