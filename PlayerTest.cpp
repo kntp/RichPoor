@@ -34,17 +34,17 @@ TEST(Player, PlayerCreateTest)
 TEST(Player, PlayerCreateTest2)
 {
 	Player *pl;
+	int rank[] = {Player::RANK_COMMON, 
+						Player::RANK_RICH, 
+						Player::RANK_RICHEST, 
+						Player::RANK_POOR, 
+						Player::RANK_POOREST};
 
 	pl = new Player(0);
-	CHECK_EQUAL(Player::RANK_COMMON, pl->getPlayerRank());
-	pl->setPlayerRank(Player::RANK_RICH);
-	CHECK_EQUAL(Player::RANK_RICH, pl->getPlayerRank());
-	pl->setPlayerRank(Player::RANK_RICHEST);
-	CHECK_EQUAL(Player::RANK_RICHEST, pl->getPlayerRank());
-	pl->setPlayerRank(Player::RANK_POOR);
-	CHECK_EQUAL(Player::RANK_POOR, pl->getPlayerRank());
-	pl->setPlayerRank(Player::RANK_POOREST);
-	CHECK_EQUAL(Player::RANK_POOREST, pl->getPlayerRank());
+	for(int i = 0; i < sizeof(rank); i++) {
+		pl->setPlayerRank(rank[i]);
+		CHECK_EQUAL(rank[i], pl->getPlayerRank());
+	}
 	
 	delete pl;
 }
