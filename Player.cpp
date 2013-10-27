@@ -1,9 +1,14 @@
+/**
+ * @file  Player.cpp
+ *  @brief プレーヤーの取り扱いを記述する
+ */
+
 #include <list>
 using namespace std;
 #include "Card.h"
 #include "Player.h"
 
-Player::Player(int no):player_no(no)
+Player::Player(int no):player_no(no), player_rank(RANK_COMMON)
 {
 }
 
@@ -15,8 +20,16 @@ int Player::getPlayerNo(void)
 {
 	return player_no;
 }
+
 int Player::getPlayerRank(void)
 {
-	return 0;
+	return player_rank;
+}
+
+void Player::setPlayerRank(int rank)
+{
+	player_rank = rank;
+
+	return;
 }
 
