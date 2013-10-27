@@ -38,7 +38,7 @@ public:
 	int getPlayerRank(void);
 /**
  * プレーヤーの階級を設定する
- * @return 階級
+ * @param[in] 階級
  */
 	void setPlayerRank(int rank);
 private:
