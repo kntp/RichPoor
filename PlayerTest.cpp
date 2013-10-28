@@ -31,6 +31,17 @@ TEST(Player, PlayerCreateTest)
 	}
 }
 
+TEST(Player, PlayerCreateTest1)
+{
+	Player *pl;
+
+	pl = new Player(0);
+	CHECK_EQUAL(Player::RANK_COMMON, pl->getPlayerRank());
+	pl->setPlayerRank(Player::RANK_RICH);
+	CHECK_EQUAL(Player::RANK_RICH, pl->getPlayerRank());
+	delete pl;
+}
+
 TEST(Player, PlayerCreateTest2)
 {
 	Player *pl;
@@ -41,7 +52,7 @@ TEST(Player, PlayerCreateTest2)
 						Player::RANK_POOREST};
 
 	pl = new Player(0);
-	for(int i = 0; i < sizeof(rank); i++) {
+	for(int i = 0; i < (sizeof(rank) / sizeof(int)); i++) {
 		pl->setPlayerRank(rank[i]);
 		CHECK_EQUAL(rank[i], pl->getPlayerRank());
 	}
