@@ -18,6 +18,11 @@ Brain::~Brain(void)
 
 bool Brain::selectCard(CardSet *field, CardSet *in, CardSet *out)
 {
+	Card *cd;
+
+	cd = in->pickCard();
+	out->addCard(cd);
+
 	return true;
 }
 
