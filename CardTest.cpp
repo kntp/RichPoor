@@ -78,6 +78,58 @@ TEST(Card, CardCompareTest)
 	CHECK_TRUE(*cd1 < *cd2);
 	delete cd1;
 	delete cd2;
+
+	cd1 = new Card(Card::SUIT_SPADE, 1);
+	cd2 = new Card(Card::SUIT_SPADE, 1);
+	CHECK_FALSE(*cd1 < *cd2);
+	delete cd1;
+	delete cd2;
+}
+
+TEST(Card, CardCompareTest1)
+{
+	Card *cd1, *cd2;
+
+	cd1 = new Card(Card::SUIT_SPADE, 2);
+	cd2 = new Card(Card::SUIT_SPADE, 1);
+	CHECK_TRUE(*cd1 > *cd2);
+	delete cd1;
+	delete cd2;
+
+	cd1 = new Card(Card::SUIT_CLUB, 13);
+	cd2 = new Card(Card::SUIT_SPADE, 2);
+	CHECK_TRUE(*cd1 > *cd2);
+	delete cd1;
+	delete cd2;
+
+	cd1 = new Card(Card::SUIT_DIAMOND, 1);
+	cd2 = new Card(Card::SUIT_SPADE, 1);
+	CHECK_FALSE(*cd1 > *cd2);
+	delete cd1;
+	delete cd2;
+}
+
+TEST(Card, CardCompareTest2)
+{
+	Card *cd1, *cd2;
+
+	cd1 = new Card(Card::SUIT_SPADE, 1);
+	cd2 = new Card(Card::SUIT_SPADE, 1);
+	CHECK_TRUE(*cd1 == *cd2);
+	delete cd1;
+	delete cd2;
+
+	cd1 = new Card(Card::SUIT_SPADE, 1);
+	cd2 = new Card(Card::SUIT_SPADE, 2);
+	CHECK_FALSE(*cd1 == *cd2);
+	delete cd1;
+	delete cd2;
+
+	cd1 = new Card(Card::SUIT_SPADE, 2);
+	cd2 = new Card(Card::SUIT_SPADE, 1);
+	CHECK_FALSE(*cd1 == *cd2);
+	delete cd1;
+	delete cd2;
 }
 
 // CardFactory Test

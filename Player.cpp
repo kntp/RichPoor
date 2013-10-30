@@ -33,3 +33,7 @@ void Player::setPlayerRank(int rank)
 	return;
 }
 
+bool Player::giveCard(Card *cd)
+{
+	return true;
+}

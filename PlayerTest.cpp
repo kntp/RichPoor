@@ -60,5 +60,18 @@ TEST(Player, PlayerCreateTest2)
 	delete pl;
 }
 
+TEST(Player, PlayerGiveCardTest2)
+{
+	Player *pl;
+	Card	*cd;
+
+	cd = new Card(Card::SUIT_CLUB, 1);
+	pl = new Player(0);
+	CHECK_TRUE(pl->giveCard(cd));
+
+	delete cd;
+	delete pl;
+}
+
 
 

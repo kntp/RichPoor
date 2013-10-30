@@ -41,6 +41,13 @@ public:
  * @param[in] 階級
  */
 	void setPlayerRank(int rank);
+/**
+ * プレーヤーにカードを与える
+ * @param[in] カード
+ * @retval true 成功
+ * @retval false 失敗
+ */
+	bool giveCard(Card *cd);
 private:
 	int player_no;
 	int player_rank;
