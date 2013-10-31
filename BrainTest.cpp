@@ -35,6 +35,7 @@ TEST(Brain, selectCardTest)
 	field = new CardSet();
 	in = new CardSet();
 	out = new CardSet();
+
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 3);
 	field->addCard(cd);
 	cd = CardFactory::createCard(Card::SUIT_SPADE, 4);
@@ -45,6 +46,7 @@ TEST(Brain, selectCardTest)
 	CHECK_TRUE(result);
 	CHECK_EQUAL(0, in->getSize());
 	CHECK_EQUAL(1, out->getSize());
+
 	field->clearCards();
 	delete field;
 	in->clearCards();
