@@ -8,6 +8,8 @@ using namespace std;
 TEST_GROUP(Player)
 {
 /* declare a setup method for the test group. Optional. */
+	Player *pl;
+
 	void setup ()
 	{
 /* Set method real_one to stub. Automatically restore in teardown */
@@ -22,8 +24,6 @@ TEST_GROUP(Player)
 /* Declare one test within the test group */
 TEST(Player, PlayerCreateTest)
 {
-	Player *pl;
-
 	for(int i = 0; i < 10; i++) { 
 		pl = new Player(i);
 		CHECK_EQUAL(i, pl->getPlayerNo());
@@ -33,8 +33,6 @@ TEST(Player, PlayerCreateTest)
 
 TEST(Player, PlayerCreateTest1)
 {
-	Player *pl;
-
 	pl = new Player(0);
 	CHECK_EQUAL(Player::RANK_COMMON, pl->getPlayerRank());
 	pl->setPlayerRank(Player::RANK_RICH);
@@ -44,7 +42,6 @@ TEST(Player, PlayerCreateTest1)
 
 TEST(Player, PlayerCreateTest2)
 {
-	Player *pl;
 	int rank[] = {Player::RANK_COMMON, 
 						Player::RANK_RICH, 
 						Player::RANK_RICHEST, 
@@ -62,7 +59,6 @@ TEST(Player, PlayerCreateTest2)
 
 TEST(Player, PlayerGiveCardTest2)
 {
-	Player *pl;
 	Card	*cd;
 
 	cd = new Card(Card::SUIT_CLUB, 1);
