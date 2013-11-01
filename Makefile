@@ -4,7 +4,7 @@ LIBS = -lCppUTest
 LIBDIR = $(CPPUTEST_DIR)/lib
 CXXFLAGS = -I$(CPPUTEST_DIR)/include -g -O0 -MD
 APPOBJS = CardTest.o Card.o
-TESTOBJS = AllTests.o CardTest.o Card.o Player.o PlayerTest.o BrainTest.o Brain.o
+TESTOBJS = AllTests.o CardTest.o Card.o Player.o PlayerTest.o BrainTest.o Brain.o Field.o FieldTest.o
 TARGET = MyApp
 TEST_TARGET = MyTest
 
