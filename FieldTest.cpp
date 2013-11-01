@@ -6,22 +6,30 @@ using namespace std;
 
 TEST_GROUP(Field)
 {
+	Field *fld;
+
 	void setup ()
 	{
+		fld = new Field();
 	}
 
 	void teardown()
 	{
+		delete fld;
 	}
 };
 
 TEST(Field, FieldCreateTest)
 {
-	Field *fd;
+	CHECK_FALSE(fld == 0);
+}
 
-	fd = new Field();
+TEST(Field, FieldInitTest)
+{
 
-	CHECK_FALSE(fd == 0);
+}
 
-	delete fd;
+TEST(Field, GetCurFeildTest)
+{
+
 }
