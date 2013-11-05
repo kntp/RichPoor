@@ -26,7 +26,7 @@ TEST(Field, FieldCreateTest)
 
 TEST(Field, FieldInitTest)
 {
-
+	fld->initField();
 }
 
 TEST(Field, GetCurFeildTest)

@@ -16,5 +16,9 @@ Field::~Field(void)
 {
 }
 
+void Field::initField(void)
+{
+	return;
+}
 
 

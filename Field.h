@@ -18,6 +18,10 @@ public:
  * デストラクタ
  */
 	~Field(void);
+/**
+ * 場を初期化する 
+ */
+	void initField(void);
 private:
 	CardSet	cardset;
 };

@@ -1,6 +1,6 @@
 /**
  * @file  Card.cpp
- *  @brief カードの取り扱いを記述する
+ * @brief カードの取り扱いを記述する
  */
 
 #include <list>
