@@ -22,8 +22,12 @@ public:
  * 場を初期化する 
  */
 	void initField(void);
+/**
+ * 場のカードを参照する 
+ */
+	CardSet *CheckCurField(void);
 private:
-	CardSet	cardset;
+	CardSet	*curField, *postField;
 };
 
 #endif /* FIELD_H_ */

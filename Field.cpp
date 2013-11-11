@@ -10,10 +10,14 @@ using namespace std;
 
 Field::Field(void)
 {
+	curField = new CardSet();
+	postField = new CardSet();
 }
 
 Field::~Field(void)
 {
+	delete curField;
+	delete postField;
 }
 
 void Field::initField(void)
@@ -21,4 +25,8 @@ void Field::initField(void)
 	return;
 }
 
+CardSet *Field::CheckCurField(void)
+{
+	return curField;
+}
 

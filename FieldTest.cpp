@@ -26,7 +26,11 @@ TEST(Field, FieldCreateTest)
 
 TEST(Field, FieldInitTest)
 {
+	CardSet *cset = NULL;
+
 	fld->initField();
+	cset = fld->CheckCurField();
+	CHECK_TRUE(cset != NULL);
 }
 
 TEST(Field, GetCurFeildTest)
